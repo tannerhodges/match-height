@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "eslint-config-airbnb-base"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "no-return-assign": "off",
+    "no-underscore-dangle": "off",
+    "prefer-destructuring": "off",
+    "prefer-template": "off"
+  }
+}

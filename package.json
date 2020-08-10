@@ -1,0 +1,48 @@
+{
+  "name": "@tannerhodges/match-height",
+  "version": "1.1.0",
+  "description": "Simple JavaScript plugin to make different elements the same height.",
+  "keywords": [
+    "match",
+    "height",
+    "match-height",
+    "equal",
+    "equalize"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tannerhodges/match-height.git"
+  },
+  "private": false,
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/",
+    "access": "public"
+  },
+  "main": "docs/match-height.js",
+  "files": [
+    "docs/match-height.js"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "bugs": {
+    "url": "https://github.com/tannerhodges/match-height/issues"
+  },
+  "homepage": "https://github.com/tannerhodges/match-height#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "stylelint": "^13.6.1",
+    "stylelint-config-property-sort-order-smacss": "^6.3.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "author": "Tanner Hodges <me@tannerhodges.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+
+    <title>🦖 Match Height</title>
+    <meta name="description" content="Simple JavaScript plugin to make different elements the same height.">
+
+    <!-- 💄 Styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Indie+Flower&display=swap">
+    <link rel="stylesheet" href="./demo.css">
+
+    <!-- ⚙️ Scripts -->
+    <script src="./match-height.js"></script>
+
+    <!-- ⚡️ And if you're a jQuery Power User... -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+    <script>// ... we thought of you too.
+      $.fn.matchHeight = function () {
+        window.MatchHeight.add(this);
+      };
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1 class="h1"><span class="h1__dino" aria-hidden="true">🦖</span> Match Height</h1>
+      <p>So you want to make your elements the same height, huh?</p>
+      <p>CSS not cutting it?</p>
+      <p>Yep, we know.</p>
+
+      <h2 id="basic-example">Basic Example</h2>
+      <p>Flexbox & CSS Grid are amazing tools, but until we get <a href="#ps-css-subgrid">CSS Subgrid</a> you still need JavaScript to match elements across containers.</p>
+      <p>Match Height makes this as easy as adding a <u>data-match-height</u> attribute.</p>
+<pre><code>&lt;h3 data-match-height=&quot;heading&quot;&gt;My Example Heading&lt;/h3&gt;</code></pre>
+      <div class="example example--1" data-match-height-group="basic-example">
+        <div class="example__item">
+          <h3 data-match-height="heading" class="example__heading">Person 1</h3>
+          <img class="example__image" src="https://www.fillmurray.com/201/201" alt="" width="200" height="200" loading="lazy">
+          <p class="example__text">Stuff about person 1.</p>
+        </div>
+        <div class="example__item">
+          <h3 data-match-height="heading" class="example__heading">Person 2</h3>
+          <img class="example__image" src="https://www.fillmurray.com/202/202" alt="" width="200" height="200" loading="lazy">
+          <p class="example__text">So much stuff about person 2. You wouldn't believe how interesting they are. We could just talk about them all day.</p>
+        </div>
+        <div class="example__item">
+          <h3 data-match-height="heading" class="example__heading">Person With a Long Name</h3>
+          <img class="example__image" src="https://www.fillmurray.com/203/203" alt="" width="200" height="200" loading="lazy">
+          <p class="example__text">Stuff about person with a long name.</p>
+        </div>
+      </div>
+
+      <h2 id="responsive-example">Responsive Example</h2>
+      <p>But how do I turn it off on mobile?</p>
+      <p>Simple! Add <u>data-match-height-enable</u> to your container element.</p>
+<pre><code>&lt;div data-match-height-enable=&quot;(min-width: 560px)&quot;&gt;
+  ...
+&lt;/div&gt;</code></pre>
+      <div class="example example--2" data-match-height-group="responsive-example" data-match-height-enable="(min-width: 560px)">
+        <div class="example__item">
+          <h3 data-match-height="heading" class="example__heading">Person 1</h3>
+          <img class="example__image" src="https://www.fillmurray.com/204/204" alt="" width="200" height="200" loading="lazy">
+          <p class="example__text">Stuff about person 1.</p>
+        </div>
+        <div class="example__item">
+          <h3 data-match-height="heading" class="example__heading">Person 2</h3>
+          <img class="example__image" src="https://www.fillmurray.com/205/205" alt="" width="200" height="200" loading="lazy">
+          <p class="example__text">So much stuff about person 2. You wouldn't believe how interesting they are. We could just talk about them all day.</p>
+        </div>
+        <div class="example__item">
+          <h3 data-match-height="heading" class="example__heading">Person With a Long Name</h3>
+          <img class="example__image" src="https://www.fillmurray.com/206/206" alt="" width="200" height="200" loading="lazy">
+          <p class="example__text">Stuff about person with a long name.</p>
+        </div>
+      </div>
+
+      <h2 id="grouping-elements">Grouping Elements</h2>
+      <p>What if I have different groups of elements with the same name? How can I match them separately?</p>
+      <p>You've got a couple options.</p>
+      <p>1. Use the <u>data-match-height-group</u> attribute to wrap elements in a more specific group.</p>
+<pre><code>&lt;div data-match-height-group=&quot;group-1&quot;&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div data-match-height-group=&quot;group-2&quot;&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      <p>2. Or, if you need to keep your elements in the same container, add prefixes to your group names.</p>
+<pre><code>&lt;div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;group-1-heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;group-1-heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;group-1-heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;group-2-heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;group-2-heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;h3 data-match-height=&quot;group-2-heading&quot;&gt;&lt;/h3&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+      <h2 id="declarative-imperative">Triggering Updates</h2>
+      <p>If you ever need to force-update elements, call <u>MatchHeight.update()</u>.</p>
+      <p>To help save the planet, you can also limit your update to a specific group of elements.</p>
+<pre><code>MatchHeight.update();
+
+// or
+
+MatchHeight.update('.your-elements');</code></pre>
+      <p>Need to start over? Call <u>MatchHeight.reset()</u>.</p>
+<pre><code>MatchHeight.reset();</code></pre>
+
+      <h2 id="declarative-imperative">Declarative & Imperative</h2>
+      <p>Big words!</p>
+      <p>While we recommend using HTML attributes for most cases, sometimes you do need control to programmatically match elements.</p>
+      <p>For that, we offer <u>MatchHeight.add()</u>.</p>
+<pre><code>MatchHeight.add('.your-elements');
+
+// or
+
+MatchHeight.add('.your-elements', 'some-group');</code></pre>
+      <p>Elements are added to a new, unique group by default, but you can also specify a group to add them to.</p>
+
+      <h2 id="jquery-friendly">jQuery-Friendly</h2>
+      <p>We don't require jQuery, but we do love all you jQuery power users out there!</p>
+      <p>As long as you load jQuery <em>first</em>, we'll add a handy <u>.matchHeight()</u> function just for you.</p>
+<pre><code>&lt;script src=&quot;jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;match-height.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+  $(&#039;.jquery-elements&#039;).matchHeight();
+&lt;/script&gt;</code></pre>
+
+      <h2 id="spa-friendly">SPA-Friendly</h2>
+      <p>What's that? You're using the latest and greatest JS frameworks?</p>
+      <p>Excellent!</p>
+      <p>To integrate Match Height, just call <u>MatchHeight.reset()</u> when your app mounts...</p>
+<pre><code>const app = new Vue({
+  el: '#app',
+  mounted() {
+    MatchHeight.reset();
+  },
+});</code></pre>
+      <p>Or use <u>MatchHeight.add()</u> when your components mount...</p>
+<pre><code>Vue.component('person', {
+  props: ['person'],
+  template: `
+    &lt;div&gt;
+      &lt;h3 v-text=&quot;person.name&quot; ref=&quot;heading&quot;&gt;&lt;/h3&gt;
+      &lt;img :src=&quot;person.image&quot; alt=&quot;&quot;&gt;
+      &lt;p v-text=&quot;person.description&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  `,
+  mounted() {
+    this.$nextTick(() => MatchHeight.add(this.$refs.heading, 'person-heading'));
+  },
+  beforeDestroy() {
+    MatchHeight.remove(this.$refs.heading, 'person-heading');
+  },
+});</code></pre>
+      <p>Either way, the power is yours!</p>
+
+      <h2 id="debugging">Debugging</h2>
+      <p>If your powers grow wildly out of control, use <u>MatchHeight.debug()</u> to help get a grip on things.</p>
+      <p>Just specify a group or element to get all the details...</p>
+<pre><code>// Running any of these...
+
+MatchHeight.debug('group-id');
+MatchHeight.debug('.your-class');
+MatchHeight.debug(element);
+MatchHeight.debug(elements);
+
+// will console.log()...
+
+{
+  isEnabled: true
+  control: div.example
+  enable: "(min-width: 560px)"
+  disable: null
+  groupID: "example-heading"
+  group: (3) [h3.example__heading, h3.example__heading, h3.example__heading]
+}</code></pre>
+      <p>And with that, we bid you adieu!</p>
+      <p>Go forth and match responsibly.</p>
+
+      <h2 id="ps-css-subgrid">P.S. CSS Subgrid</h2>
+      <p>Keep an eye on <a href="https://caniuse.com/#feat=css-subgrid" target="_blank" rel="noopener">CSS Subgrid</a>. When that's supported everywhere, you won't need this plugin anymore!</p>
+<pre><code>@media (min-width: 560px) {
+  .example {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .example__item {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: auto / span 3;
+  }
+}</code></pre>
+      <ul>
+        <li><a href="https://caniuse.com/#feat=css-subgrid" target="_blank" rel="noopener">Can I use… CSS Subgrid</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Subgrid" target="_blank" rel="noopener">MDN: CSS Grid Layout: Subgrid</a></li>
+        <li><a href="https://dev.to/kenbellows/why-we-need-css-subgrid-53mh" target="_blank" rel="noopener">DEV: Why we need CSS subgrid</a></li>
+        <li><a href="https://rachelandrew.co.uk/archives/2017/07/20/why-display-contents-is-not-css-grid-layout-subgrid/" target="_blank" rel="noopener">Rachel Andrew: Why display: contents is not CSS Grid Layout subgrid</a></li>
+      </ul>
+    </main>
+  </body>
+</html>
