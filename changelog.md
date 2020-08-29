@@ -7,11 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.1] - 2020-08-28
+
+### Added
+
+- Babel + Element.closest polyfill for IE support.
+
 ## [1.1.0] - 2020-08-10
 
 ### Changed
 
 - Open source the project!
 
-[Unreleased]: https://github.com/tannerhodges/match-height/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/tannerhodges/match-height/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/tannerhodges/match-height/releases/tag/v1.1.1
 [1.1.0]: https://github.com/tannerhodges/match-height/releases/tag/v1.1.0

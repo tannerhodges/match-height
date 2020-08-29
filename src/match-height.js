@@ -1,3 +1,6 @@
+// Dependencies
+import elementClosest from 'element-closest';
+
 // Helpers
 import dashes from './helpers/dashes';
 import getElementsFromParam from './helpers/getElementsFromParam';
@@ -392,6 +395,9 @@ class MatchHeight {
     }
   }
 }
+
+// Init polyfills.
+elementClosest(window);
 
 // Manage everything in a single, shared instance
 const shared = new MatchHeight();
