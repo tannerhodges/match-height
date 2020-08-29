@@ -4,7 +4,7 @@ Simple JavaScript plugin to make different elements the same height.
 
 ## ⚡️ Quick Start
 
-1. `npm install --save @tannerhodges/match-height`
+1. `npm install @tannerhodges/match-height`
 2. `import MatchHeight from '@tannerhodges/match-height';` _-- OR --_ `<script async src="match-height.js"></script>`
 3. Add `data-match-height` to your elements.
 
