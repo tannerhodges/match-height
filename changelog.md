@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.3] - 2021-10-25
+
 ### Fixed
 
 - Upgrade to HTTPS npm registry.
@@ -31,7 +33,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Open source the project!
 
-[Unreleased]: https://github.com/tannerhodges/match-height/compare/v1.1.2...HEAD
+[Unreleased]: https://github.com/tannerhodges/match-height/compare/v1.1.3...HEAD
+[1.1.3]: https://github.com/tannerhodges/match-height/compare/v1.1.1..v1.1.3
 [1.1.2]: https://github.com/tannerhodges/match-height/compare/v1.1.1..v1.1.2
 [1.1.1]: https://github.com/tannerhodges/match-height/compare/v1.1.0..v1.1.1
 [1.1.0]: https://github.com/tannerhodges/match-height/releases/tag/v1.1.0
