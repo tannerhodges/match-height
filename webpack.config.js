@@ -5,8 +5,7 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   devServer: {
-    contentBase: './docs',
-    watchContentBase: true,
+    static: ['docs'],
   },
   module: {
     rules: [
